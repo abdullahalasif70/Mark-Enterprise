@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mark Enterprise — IT Services & Procurement Supply</title>
+  <meta name="description" content="Mark Enterprise provides IT services and procurement & supply solutions in Bangladesh. Reliable, fast, and compliant." />
+  <style>
+    :root{
+      --brand:#0ea5e9; /* sky-500 */
+      --brand-600:#0284c7; /* sky-600 */
+      --ink:#0f172a; /* slate-900 */
+      --muted:#64748b; /* slate-500 */
+      --bg:#f8fafc; /* slate-50 */
+      --card:#ffffff;
+      --ring: rgba(14,165,233,.35);
+      --success:#16a34a;
+      --warning:#f59e0b;
+      --danger:#ef4444;
+      --radius: 18px;
+      --shadow: 0 10px 25px rgba(2,8,23,.08);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg)}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* Layout */
+    .container{width:min(1100px, 92%); margin-inline:auto}
+    .grid{display:grid; gap:24px}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:50; background:#fff; box-shadow:0 1px 0 rgba(2,8,23,.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .logo{display:flex; align-items:center; gap:10px; font-weight:800}
+    .logo-badge{width:34px; height:34px; border-radius:10px; background:linear-gradient(135deg,var(--brand),#60a5fa); display:grid; place-items:center; color:#fff; font-weight:900}
+    .logo span{letter-spacing:.3px}
+
+    /* Mobile nav toggle */
+    #nav-toggle{display:none}
+    .menu{display:flex; gap:22px; align-items:center}
+    .menu a{font-weight:600; color:#0f172a; opacity:.85}
+    .menu a:hover{color:var(--brand)}
+    .cta{padding:10px 16px; border-radius:999px; background:var(--brand); color:#fff; font-weight:700; box-shadow:var(--shadow)}
+    .cta:hover{background:var(--brand-600)}
+
+    .hamburger{display:none; width:40px; height:40px; border-radius:10px; border:1px solid #e5e7eb; align-items:center; justify-content:center}
+
+    @media (max-width: 860px){
+      .hamburger{display:flex}
+      .menu{position:fixed; inset:70px 0 auto 0; background:#fff; flex-direction:column; padding:20px; gap:16px; border-bottom:1px solid #e5e7eb; transform:translateY(-120%); transition:.3s ease}
+      #nav-toggle:checked ~ .menu{transform:translateY(0)}
+    }
+
+    /* Hero */
+    .hero{padding:64px 0}
+    .hero-inner{display:grid; grid-template-columns: 1.2fr 1fr; gap:36px; align-items:center}
+    .eyebrow{display:inline-block; padding:6px 12px; border-radius:999px; background:#e0f2fe; color:#075985; font-weight:700; margin-bottom:12px}
+    h1{font-size:clamp(28px, 4vw, 48px); line-height:1.05; margin:0 0 12px}
+    .lead{color:var(--muted); font-size:clamp(16px, 2vw, 18px)}
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .btn{padding:12px 18px; border-radius:12px; font-weight:700; border:1px solid transparent; display:inline-flex; align-items:center; gap:10px}
+    .btn-primary{background:var(--brand); color:#fff}
+    .btn-primary:hover{background:var(--brand-600)}
+    .btn-ghost{border-color:#e5e7eb; background:#fff}
+    .btn-ghost:hover{border-color:#cbd5e1}
+
+    .hero-card{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px}
+    .stat{display:flex; align-items:center; gap:14px}
+    .stat b{font-size:22px}
+    .chip{font-size:12px; color:#065f46; background:#d1fae5; padding:4px 8px; border-radius:999px; font-weight:700}
+
+    @media (max-width: 860px){
+      .hero-inner{grid-template-columns:1fr}
+    }
+
+    /* Sections */
+    section{padding:56px 0}
+    .section-head{display:flex; justify-content:space-between; align-items:end; gap:12px; margin-bottom:24px}
+    .section-head h2{margin:0; font-size:clamp(22px,3vw,34px)}
+    .section-head p{margin:0; color:var(--muted)}
+
+    /* Cards */
+    .cards{display:grid; grid-template-columns: repeat(3, 1fr); gap:20px}
+    .card{background:var(--card); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow); border:1px solid #eef2f7}
+    .card h3{margin:6px 0 8px}
+    .card p{margin:0; color:var(--muted)}
+    .icon{width:42px; height:42px; border-radius:12px; display:grid; place-items:center; background:#eff6ff}
+    .badge{display:inline-block; font-size:12px; background:#f1f5f9; padding:4px 8px; border-radius:999px; margin-right:6px}
+
+    @media (max-width: 980px){
+      .cards{grid-template-columns: repeat(2, 1fr)}
+    }
+    @media (max-width: 640px){
+      .cards{grid-template-columns: 1fr}
+    }
+
+    /* Feature band */
+    .band{background:linear-gradient(180deg,#f0f9ff, #fff)}
+    .band .features{display:grid; grid-template-columns: repeat(4, 1fr); gap:16px}
+    .feature{display:flex; gap:10px; align-items:center; background:#fff; border-radius:12px; padding:12px; border:1px solid #e5e7eb}
+    @media (max-width: 860px){
+      .band .features{grid-template-columns: repeat(2, 1fr)}
+    }
+
+    /* Process */
+    .steps{display:grid; grid-template-columns: repeat(4, 1fr); gap:18px}
+    .step{background:#fff; border:1px dashed #cbd5e1; border-radius:12px; padding:16px}
+    .step b{display:inline-block; background:var(--ink); color:#fff; border-radius:8px; padding:4px 10px; font-size:12px}
+    @media (max-width: 980px){
+      .steps{grid-template-columns: repeat(2, 1fr)}
+    }
+    @media (max-width: 640px){
+      .steps{grid-template-columns: 1fr}
+    }
+
+    /* Contact */
+    .contact{display:grid; grid-template-columns: 1.1fr .9fr; gap:24px}
+    form{background:#fff; border:1px solid #e5e7eb; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    label{font-weight:700; font-size:14px}
+    .field{margin:10px 0 14px}
+    input, textarea{width:100%; padding:12px 14px; border:1px solid #e5e7eb; border-radius:10px; outline:none; font-family:inherit}
+    input:focus, textarea:focus{border-color:var(--brand); box-shadow:0 0 0 4px var(--ring)}
+    textarea{min-height:120px; resize:vertical}
+    .contact-card{background:#fff; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow); border:1px solid #eef2f7}
+
+    @media (max-width: 900px){
+      .contact{grid-template-columns: 1fr}
+    }
+
+    /* Footer */
+    footer{padding:30px 0 60px; border-top:1px solid #e5e7eb; background:#fff}
+    .foot{display:grid; grid-template-columns: 1.2fr .8fr .8fr; gap:18px}
+    .foot p{color:var(--muted)}
+    .foot ul{list-style:none; padding:0; margin:0}
+    .foot li{margin:8px 0}
+    .foot a{color:var(--muted)}
+    .foot a:hover{color:var(--brand)}
+    .copyright{margin-top:20px; color:#94a3b8}
+    @media (max-width: 860px){
+      .foot{grid-template-columns: 1fr}
+    }
+
+    /* Helpers */
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+    .muted{color:var(--muted)}
+    .pill{display:inline-block; padding:6px 10px; border:1px solid #e5e7eb; border-radius:999px; font-size:12px; margin-right:8px; background:#fff}
+    .center{text-align:center}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="logo-badge" aria-hidden="true">M</div>
+        <span>Mark Enterprise</span>
+      </div>
+
+      <label for="nav-toggle" class="hamburger" aria-label="Open navigation" role="button">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </label>
+      <input type="checkbox" id="nav-toggle" class="sr-only" />
+
+      <nav class="menu" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="container hero-inner">
+      <div>
+        <span class="eyebrow">IT Services • Procurement & Supply</span>
+        <h1>Reliable solutions for your <span style="color:var(--brand)">business growth</span>.</h1>
+        <p class="lead">Mark Enterprise helps organizations in Bangladesh plan, source, and deploy technology — and deliver compliant procurement & supply for projects of any size.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+            Get a Quote
+          </a>
+          <a href="#services" class="btn btn-ghost">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M14.31 8l5.74 9.94"></path><path d="M9.69 8h11.48"></path><path d="M7.38 12l5.74-9.94"></path><path d="M9.69 16L3.95 6.06"></path><path d="M14.31 16H2.83"></path></svg>
+            Explore Services
+          </a>
+        </div>
+        <div class="grid" style="grid-template-columns:repeat(3,1fr); gap:14px; margin-top:22px">
+          <div class="hero-card stat"><span class="chip">On-time</span><b>98.9%</b><span class="muted">delivery</span></div>
+          <div class="hero-card stat"><span class="chip" style="background:#fee2e2;color:#991b1b">Support</span><b>24/7</b><span class="muted">helpdesk</span></div>
+          <div class="hero-card stat"><span class="chip">Trusted</span><b>50+ </b><span class="muted">clients</span></div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <img alt="Abstract illustration" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='600' height='420'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%230ea5e9'/><stop offset='100%' stop-color='%2360a5fa'/></linearGradient></defs><rect width='100%' height='100%' fill='%23f1f5f9'/><circle cx='120' cy='120' r='90' fill='url(%23g)'/><rect x='250' y='60' rx='16' ry='16' width='290' height='180' fill='white' stroke='%23e5e7eb'/><rect x='270' y='84' width='130' height='16' rx='8' fill='%23e2e8f0'/><rect x='270' y='112' width='230' height='12' rx='6' fill='%23e2e8f0'/><rect x='270' y='132' width='210' height='12' rx='6' fill='%23e2e8f0'/><rect x='270' y='152' width='240' height='12' rx='6' fill='%23e2e8f0'/><rect x='250' y='260' rx='16' ry='16' width='290' height='120' fill='white' stroke='%23e5e7eb'/><rect x='270' y='284' width='180' height='16' rx='8' fill='%23e2e8f0'/><rect x='270' y='312' width='210' height='12' rx='6' fill='%23e2e8f0'/></svg>" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature band -->
+  <section class="band">
+    <div class="container">
+      <div class="section-head">
+        <h2>Why work with us</h2>
+        <p>Local expertise • Transparent pricing • Compliance-first</p>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <div class="icon" aria-hidden="true">🏢</div>
+          <div><b>Govt & Corporate ready</b><div class="muted">RFQ, e-GP, framework, BoQ</div></div>
+        </div>
+        <div class="feature">
+          <div class="icon" aria-hidden="true">🚚</div>
+          <div><b>End-to-end supply</b><div class="muted">Sourcing, QC, delivery, install</div></div>
+        </div>
+        <div class="feature">
+          <div class="icon" aria-hidden="true">🛡️</div>
+          <div><b>Warranty & SLA</b><div class="muted">Clear service levels</div></div>
+        </div>
+        <div class="feature">
+          <div class="icon" aria-hidden="true">💬</div>
+          <div><b>Fast support</b><div class="muted">Phone, WhatsApp, email</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2>Our Services</h2>
+        <p>IT services and procurement & supply tailored to your project.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="icon" aria-hidden="true">🖥️</div>
+          <h3>Managed IT & Support</h3>
+          <p>Network setup, server management, security hardening, backups, and 24/7 helpdesk.</p>
+          <div style="margin-top:10px">
+            <span class="badge">LAN/Wi‑Fi</span>
+            <span class="badge">CCTV</span>
+            <span class="badge">Firewall</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">🧾</div>
+          <h3>Procurement & Supply</h3>
+          <p>Vendor sourcing, quotation, purchase, delivery, and acceptance as per BoQ and compliance.</p>
+          <div style="margin-top:10px">
+            <span class="badge">RFQ</span>
+            <span class="badge">e‑GP</span>
+            <span class="badge">LC/TT</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">🧰</div>
+          <h3>Installation & Commissioning</h3>
+          <p>On‑site setup for IT equipment, office infrastructure, power & accessories with documentation.</p>
+          <div style="margin-top:10px">
+            <span class="badge">Rack & Power</span>
+            <span class="badge">End‑user</span>
+            <span class="badge">SOPs</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">🔐</div>
+          <h3>Cybersecurity</h3>
+          <p>Endpoint protection, asset hardening, policy setup, and staff awareness training.</p>
+          <div style="margin-top:10px">
+            <span class="badge">AV/EDR</span>
+            <span class="badge">IAM</span>
+            <span class="badge">Backup</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">🧩</div>
+          <h3>Custom Software (Light)</h3>
+          <p>Small business websites and internal tools. Integration with Google Workspace & more.</p>
+          <div style="margin-top:10px">
+            <span class="badge">Website</span>
+            <span class="badge">Automation</span>
+            <span class="badge">Reporting</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">📦</div>
+          <h3>Office & IT Supplies</h3>
+          <p>Laptops, printers, UPS, networking, stationery — sourced from authorized distributors.</p>
+          <div style="margin-top:10px">
+            <span class="badge">OEM</span>
+            <span class="badge">Warranty</span>
+            <span class="badge">After‑sales</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process">
+    <div class="container">
+      <div class="section-head">
+        <h2>Simple, compliant process</h2>
+        <p>From requirement to delivery & sign‑off.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><b>1 • Scope</b><p class="muted">We review your requirement/RFQ and prepare a clear BoQ & timeline.</p></div>
+        <div class="step"><b>2 • Quote</b><p class="muted">Competitive quotation with brand options and warranty terms.</p></div>
+        <div class="step"><b>3 • Supply</b><p class="muted">Procurement, QC, delivery, and installation with documentation.</p></div>
+        <div class="step"><b>4 • Support</b><p class="muted">SLA‑based support and preventive maintenance.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <h2>About Mark Enterprise</h2>
+        <p>Dhaka‑based service company working with SMEs, NGOs, and public sector.</p>
+      </div>
+
+      <div class="grid" style="grid-template-columns: 1.2fr .8fr">
+        <div>
+          <p>We combine hands‑on IT expertise with disciplined procurement and supply. Our team is experienced in vendor coordination, documentation, and on‑site execution so you can focus on operations.</p>
+          <p class="muted">Highlights: timely project delivery, clear communication, and after‑sales support.</p>
+          <div style="margin-top:10px">
+            <span class="pill">TIN & Trade License</span>
+            <span class="pill">Mushak/Tax Invoice</span>
+            <span class="pill">e‑GP Experience</span>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <h3 style="margin-top:0">Industries we serve</h3>
+          <ul style="margin:0; padding-left:18px">
+            <li>Corporate offices & startups</li>
+            <li>Schools & training centers</li>
+            <li>NGOs & development projects</li>
+            <li>Govt. & e‑GP procurements</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2>Get a quote</h2>
+        <p>Tell us what you need — we’ll reply quickly.</p>
+      </div>
+
+      <div class="contact">
+        <form action="mailto:hello@markenterprise.example" method="post" enctype="text/plain">
+          <div class="field">
+            <label for="name">Your Name</label>
+            <input id="name" name="name" type="text" placeholder="e.g., Rahim Uddin" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="field">
+            <label for="phone">Phone / WhatsApp</label>
+            <input id="phone" name="phone" type="tel" placeholder="01XXXXXXXXX" />
+          </div>
+          <div class="field">
+            <label for="message">Requirement</label>
+            <textarea id="message" name="message" placeholder="Write a short description of your project or RFQ..."></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Send Request</button>
+          <span class="muted" style="margin-left:10px">We reply within 1 business day.</span>
+        </form>
+
+        <div class="contact-card">
+          <h3 style="margin-top:0">Contact Details</h3>
+          <p class="muted">Office: Mohakhali, Banani, Dhaka</p>
+          <p class="muted">Phone: +880 1XXX‑XXXXXX</p>
+          <p class="muted">Email: hello@markenterprise.example</p>
+          <hr style="border:none; border-top:1px solid #e5e7eb; margin:14px 0">
+          <h4 style="margin:0 0 8px">Popular items we supply</h4>
+          <ul style="margin:0; padding-left:18px">
+            <li>Laptops, desktops, monitors (HP, Dell, Lenovo)</li>
+            <li>Printers, toners, UPS, routers & switches</li>
+            <li>Cables, racks, patch panels, accessories</li>
+            <li>Stationery & office consumables</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container foot">
+      <div>
+        <div class="logo" style="margin-bottom:8px">
+          <div class="logo-badge" aria-hidden="true">M</div>
+          <span>Mark Enterprise</span>
+        </div>
+        <p>Trusted partner for IT services and procurement & supply in Bangladesh.</p>
+      </div>
+      <div>
+        <b>Company</b>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">Process</a></li>
+        </ul>
+      </div>
+      <div>
+        <b>Support</b>
+        <ul>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Request Quote</a></li>
+          <li><a href="#">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container copyright">© <span id="y"></span> Mark Enterprise. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
