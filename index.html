@@ -21,6 +21,198 @@
       --shadow: 0 10px 25px rgba(2,8,23,.08);
     }
 
+    .hero {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center;     /* center vertically */
+  min-height: 100vh;       /* full viewport height */
+  text-align: center;      /* center all text */
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.hero-inner {
+  max-width: 800px;        /* optional, limits content width */
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;  /* center buttons */
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  justify-items: center;    /* center each stat card */
+  margin-top: 1.5rem;
+}
+
+/* Optional: responsive adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr; /* stack stats vertically */
+  }
+}
+
+    .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Header */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.logo img {
+  max-height: 50px;
+}
+
+/* Hamburger menu */
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.menu {
+  display: flex;
+  gap: 1rem;
+}
+
+.menu a {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+.cta {
+  background: #1f2937;
+  color: white;
+  border-radius: 0.5rem;
+}
+
+/* Hero section - CENTERED for desktop and mobile */
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* center horizontally */
+  text-align: center;    /* center all text */
+  padding: 2rem 0;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 800px; /* optional: limit width for readability */
+}
+
+.eyebrow {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.brand {
+  color: #f59e0b;
+}
+
+.lead {
+  font-size: 1rem;
+  color: #374151;
+  margin-bottom: 1.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center; /* center buttons */
+  margin-bottom: 1.5rem;
+}
+
+/* Hero stats - centered */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 1.5rem;
+  justify-items: center; /* center items inside grid */
+}
+
+.hero-card.stat {
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+.chip {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 9999px;
+  background: #d1fae5;
+  color: #065f46;
+  margin-bottom: 0.3rem;
+}
+
+.chip.support {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.muted {
+  display: block;
+  color: #6b7280;
+  margin-top: 0.2rem;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 1rem;
+  }
+
+  #nav-toggle:checked + .menu {
+    display: flex;
+  }
+
+  .menu a {
+    padding: 0.5rem 0;
+    text-align: center;
+  }
+
+  /* Hero stats become single column */
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg)}
@@ -57,6 +249,90 @@
       .menu{position:fixed; inset:70px 0 auto 0; background:#fff; flex-direction:column; padding:20px; gap:16px; border-bottom:1px solid #e5e7eb; transform:translateY(-120%); transition:.3s ease}
       #nav-toggle:checked ~ .menu{transform:translateY(0)}
     }
+
+    /* Basic container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  .section-head h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Grid layout */
+  .grid {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  /* Left content */
+  .content p {
+    margin-bottom: 1rem;
+  }
+
+  .muted {
+    color: #6b7280; /* gray */
+  }
+
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .pill {
+    background: #e5e7eb; /* light gray */
+    padding: 0.3rem 0.7rem;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+  }
+
+  /* Aside card */
+  .hero-card {
+    background: #f9fafb; /* very light gray */
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .hero-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-card ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    list-style-type: disc;
+  }
+
+  /* MOBILE RESPONSIVE */
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr;
+      text-align: center; /* center all text */
+    }
+
+    .content, .hero-card {
+      text-align: center;
+    }
+
+    .pills {
+      justify-content: center;
+    }
+
+    .hero-card ul {
+      padding-left: 0;
+      display: inline-block; /* keep bullets */
+      text-align: left; /* list remains left-aligned */
+    }
+  }
 
     /* Hero */
     .hero{padding:64px 0}
@@ -135,17 +411,22 @@
     }
 
     /* Footer */
-    footer{padding:30px 0 60px; border-top:1px solid #e5e7eb; background:#fff}
-    .foot{display:grid; grid-template-columns: 1.2fr .8fr .8fr; gap:18px}
-    .foot p{color:var(--muted)}
-    .foot ul{list-style:none; padding:0; margin:0}
-    .foot li{margin:8px 0}
-    .foot a{color:var(--muted)}
-    .foot a:hover{color:var(--brand)}
-    .copyright{margin-top:20px; color:#94a3b8}
-    @media (max-width: 860px){
-      .foot{grid-template-columns: 1fr}
-    }
+    footer{padding:30px 0 60px;border-top:1px solid #e5e7eb;background:#fff}
+.foot{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:18px}
+.foot p{color:var(--muted)}
+.foot ul{list-style:none;padding:0;margin:0}
+.foot li{margin:8px 0}
+.foot a{color:var(--muted);text-decoration:none}
+.foot a:hover{color:var(--brand)}
+.copyright{margin-top:20px;color:#94a3b8;text-align:center}
+/* @media(max-width:1024px){.foot{grid-template-columns:1fr 1fr}} */
+@media(max-width:640px){
+  #md{max-width: 100px; margin: auto;}
+  .foot{grid-template-columns:1fr;text-align:center}
+  .foot div{margin-bottom:16px}
+  .logo{display:flex;justify-content:center}
+  .logo img{max-width:160px}
+}
 
     /* Helpers */
     .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
@@ -160,50 +441,51 @@
 <body>
   <!-- Header -->
   <header>
-    <div class="container nav">
-      <div class="logo">
-        <img src="WhatsApp Image 2025-08-14 at 15.12.53_1e8832f0.jpg" alt="">
-        <!-- <div class="logo-badge" aria-hidden="true">M</div> -->
-      </div>
-
-      <label for="nav-toggle" class="hamburger" aria-label="Open navigation" role="button">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-      </label>
-      <input type="checkbox" id="nav-toggle" class="sr-only" />
-
-      <nav class="menu" aria-label="Primary">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#process">Process</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="cta">Contact</a>
-      </nav>
+    
+  <div class="container nav">
+    <div class="logo">
+      <img src="WhatsApp Image 2025-08-14 at 15.12.53_1e8832f0.jpg" alt="Logo">
     </div>
-  </header>
 
-  <!-- Hero -->
-  <section id="home" class="hero">
-    <div class="container hero-inner">
-      <div>
-        <span class="eyebrow">IT Services • Procurement & Supply</span>
-        <h1>Reliable solutions for your <span style="color:var(--brand)">business growth</span>.</h1>
-        <p class="lead">Mark Enterprise helps organizations in Bangladesh plan, source, and deploy technology — and deliver compliant procurement & supply for projects of any size.</p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
-            Get a Quote
-          </a>
-          <a href="#services" class="btn btn-ghost">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M14.31 8l5.74 9.94"></path><path d="M9.69 8h11.48"></path><path d="M7.38 12l5.74-9.94"></path><path d="M9.69 16L3.95 6.06"></path><path d="M14.31 16H2.83"></path></svg>
-            Explore Services
-          </a>
-        </div>
-        <div class="grid" style="grid-template-columns:repeat(3,1fr); gap:14px; margin-top:22px">
-          <div class="hero-card stat"><span class="chip">On-time</span><b>98.9%</b><span class="muted">delivery</span></div>
-          <div class="hero-card stat"><span class="chip" style="background:#fee2e2;color:#991b1b">Support</span><b>24/7</b><span class="muted">helpdesk</span></div>
-          <div class="hero-card stat"><span class="chip">Trusted</span><b>50+ </b><span class="muted">clients</span></div>
-        </div>
+    <label for="nav-toggle" class="hamburger" aria-label="Open navigation" role="button">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </label>
+    <input type="checkbox" id="nav-toggle" class="sr-only" />
+
+    <nav class="menu" aria-label="Primary">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section id="home" class="hero">
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <span class="eyebrow">IT Services • Procurement & Supply</span>
+      <h1>Reliable solutions for your <span class="brand">business growth</span>.</h1>
+      <p class="lead">Mark Enterprise helps organizations in Bangladesh plan, source, and deploy technology — and deliver compliant procurement & supply for projects of any size.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Get a Quote</a>
+        <a href="#services" class="btn btn-ghost">Explore Services</a>
       </div>
+
+      <div class="hero-stats">
+        <div class="hero-card stat"><span class="chip">On-time</span><b>98.9%</b><span class="muted">delivery</span></div>
+        <div class="hero-card stat"><span class="chip support">Support</span><b>24/7</b><span class="muted">helpdesk</span></div>
+        <div class="hero-card stat"><span class="chip">Trusted</span><b>50+</b><span class="muted">clients</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       <!-- <div class="hero-card"> -->
         <!-- <img alt="Abstract illustration" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='600' height='420'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%230ea5e9'/><stop offset='100%' stop-color='%2360a5fa'/></linearGradient></defs><rect width='100%' height='100%' fill='%23f1f5f9'/><circle cx='120' cy='120' r='90' fill='url(%23g)'/><rect x='250' y='60' rx='16' ry='16' width='290' height='180' fill='white' stroke='%23e5e7eb'/><rect x='270' y='84' width='130' height='16' rx='8' fill='%23e2e8f0'/><rect x='270' y='112' width='230' height='12' rx='6' fill='%23e2e8f0'/><rect x='270' y='132' width='210' height='12' rx='6' fill='%23e2e8f0'/><rect x='270' y='152' width='240' height='12' rx='6' fill='%23e2e8f0'/><rect x='250' y='260' rx='16' ry='16' width='290' height='120' fill='white' stroke='%23e5e7eb'/><rect x='270' y='284' width='180' height='16' rx='8' fill='%23e2e8f0'/><rect x='270' y='312' width='210' height='12' rx='6' fill='%23e2e8f0'/></svg>" /> -->
@@ -336,45 +618,52 @@
 
   <!-- About -->
   <section id="about">
-    <div class="container">
-      <div class="section-head">
-        <h2>About Mark Enterprise</h2>
-        <p>Dhaka‑based service company working with SMEs, NGOs, and public sector.</p>
+  <div class="container">
+    <!-- Heading -->
+    <div class="section-head">
+      <h2>About Mark Enterprise</h2>
+    </div>
+
+    <div class="grid">
+      <!-- Left content -->
+      <div class="content">
+        <p>
+          We combine hands-on IT expertise with disciplined procurement and supply. Our team is experienced in vendor coordination, documentation, and on-site execution so you can focus on operations.
+        </p>
+        <p class="muted">
+          Highlights: timely project delivery, clear communication, and after-sales support.
+        </p>
+        <div class="pills">
+          <span class="pill">TIN & Trade License</span>
+          <span class="pill">Mushak/Tax Invoice</span>
+          <span class="pill">e-GP Experience</span>
+        </div>
       </div>
 
-      <div class="grid" style="grid-template-columns: 1.2fr .8fr">
-        <div>
-          <p>We combine hands‑on IT expertise with disciplined procurement and supply. Our team is experienced in vendor coordination, documentation, and on‑site execution so you can focus on operations.</p>
-          <p class="muted">Highlights: timely project delivery, clear communication, and after‑sales support.</p>
-          <div style="margin-top:10px">
-            <span class="pill">TIN & Trade License</span>
-            <span class="pill">Mushak/Tax Invoice</span>
-            <span class="pill">e‑GP Experience</span>
-          </div>
-        </div>
-        <aside class="hero-card">
-          <h3 style="margin-top:0">Industries we serve</h3>
-          <ul style="margin:0; padding-left:18px">
-            <li>Corporate offices & startups</li>
-            <li>Schools & training centers</li>
-            <li>NGOs & development projects</li>
-            <li>Govt. & e‑GP procurements</li>
-          </ul>
-        </aside>
-      </div>
+      <!-- Right aside -->
+      <aside class="hero-card">
+        <h3>Industries we serve</h3>
+        <ul>
+          <li>Corporate offices & startups</li>
+          <li>Hotel, Restaurant & Cafe</li>
+          <li>Hospitals</li>
+          <li>Govt. & e-GP procurements</li>
+        </ul>
+      </aside>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- Contact -->
   <section id="contact">
     <div class="container">
       <div class="section-head">
         <h2>Get a quote</h2>
-        <p>Tell us what you need — we’ll reply quickly.</p>
       </div>
 
       <div class="contact">
-        <form action="mailto:hello@markenterprise.example" method="post" enctype="text/plain">
+        <form action="mailto:markenterprise304@gmail.com" method="post" enctype="text/plain">
           <div class="field">
             <label for="name">Your Name</label>
             <input id="name" name="name" type="text" placeholder="e.g., Rahim Uddin" required />
@@ -389,34 +678,37 @@
           </div>
           <div class="field">
             <label for="message">Requirement</label>
-            <textarea id="message" name="message" placeholder="Write a short description of your project or RFQ..."></textarea>
+            <textarea id="message" name="message" placeholder="Write a short description of your project..."></textarea>
           </div>
           <button class="btn btn-primary" type="submit">Send Request</button>
-          <span class="muted" style="margin-left:10px">We reply within 1 business day.</span>
+          <span class="muted" style="margin-left:10px">Get reply within 1 business day.</span>
         </form>
 
         <div class="contact-card">
           <h3 style="margin-top:0">Contact Details</h3>
-          <p class="muted">Office: Mohakhali, Banani, Dhaka</p>
-          <p class="muted">Phone: +880 1XXX‑XXXXXX</p>
-          <p class="muted">Email: hello@markenterprise.example</p>
+          <p class="muted">Office: Ga-181, Mohakhali Commercial Area, Banani, Dhaka</p>
+          <p class="muted">Phone: +880 1320‑383854</p>
+          <p class="muted">Email: markenterprise304@gmail.com</p>
           <hr style="border:none; border-top:1px solid #e5e7eb; margin:14px 0">
           <h4 style="margin:0 0 8px">Popular items we supply</h4>
-          <ul style="margin:0; padding-left:18px">
-            <li>Laptops, desktops, monitors (HP, Dell, Lenovo)</li>
-            <li>Printers, toners, UPS, routers & switches</li>
-            <li>Cables, racks, patch panels, accessories</li>
-            <li>Stationery & office consumables</li>
+          <ul style="margin:0; padding-left:18px;">
+            <li>Printing & packaging</li>
+            <li style="margin-top:5px;">Office essentials</li>
+            <li style="margin-top:5px;">Corporate gifts</li>
+            <li style="margin-top:5px;">Event & promotional items</li>
+            <li style="margin-top:5px;">CCTV & water filter services</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Footer -->
+
   <footer>
     <div class="container foot">
       <div>
-        <div class="logo" style="margin-bottom:8px">
+        <div id="md" class="logo" style="margin-bottom:8px">
             <img src="WhatsApp Image 2025-08-14 at 15.12.53_1e8832f0.jpg" alt="">
           <!-- <div class="logo-badge" aria-hidden="true">M</div>
           <span>Mark Enterprise</span> -->
